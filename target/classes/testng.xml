@@ -154,7 +154,7 @@
 		<parameter name="bsbrowserv" value="14.0" />
 		<parameter name="bsos" value="OS X" />
 		<parameter name="bsosv" value="Big Sur" />
-		<parameter name="tname" value="BS-S1-MacSafari" />
+		<parameter name="tname" value="BS-S2-MacSafari" />
 		
 			<classes>
 				<class name="app.netlify.automation.scenario2"/>
