@@ -1,13 +1,15 @@
-###Project Deloitte Shopping Website Automation Assignment 
-##Technology Used to develop: Windows, Selenium,Java, TestNG
-##Tools: Eclipse,Selenium, TestNG,BrowserStack
-##Instruction/Prerequisites: 
-*Install Eclipse IDE. 
-*Clone repository. 
-*Import project as existing project in eclipse project. 
-*Right click testng.xml and select run as TestNg Suite. 
-##Description: 
+### Project Deloitte Shopping Website Automation Assignment 
+## Technology Used to develop 
+Windows, Selenium,Java, TestNG
+## Tools: 
+Eclipse,Selenium, TestNG,BrowserStack
+## Instruction/Prerequisites: 
+* Install Eclipse IDE. 
+* Clone repository. 
+* Import project as existing project in eclipse project. 
+* Right click testng.xml and select run as TestNg Suite. 
+## Description: 
 This selenium automation project execute both scenarios as described in the assignment document. 
-testng.xml is configured so that the it runs sceanrio1 and scenario2 on following:
+testng.xml is configured in such a way that the it runs sceanrio1 and scenario2 on following:
 1. Desktop browsers: Chrome,Firefox and Edge 
 2. BrowserStack Browsers : Chrome, Firefox, Edge, Mac Safari , Android Chrome, IOS Safari. 
