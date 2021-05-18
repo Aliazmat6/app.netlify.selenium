@@ -12,23 +12,19 @@ import org.openqa.selenium.WebDriver;
 
 public class TearDown {
 
-	public void td(WebDriver driver)
-	
-	{
-		
-		driver.quit();
-		
-		
-		
-	}
 	public void Sshot(WebDriver driver,String tname) throws IOException
     {
         Date date = new Date();
         SimpleDateFormat dformat  = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss.SSS");        
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile,  new File("D:\\new\\"+tname+dformat.format(date)+".png"));
+        FileUtils.copyFile(scrFile,  new File("./test-output/screenshots/"+tname+dformat.format(date)+".png"));
     }
 
+	public void td(WebDriver driver)
+	
+	{
+		driver.quit();
+	}
 	
 
 }

@@ -2,8 +2,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Suite">
-   <test name="Scenario1 local chrome">
+ <test name="Scenario1 local chrome">
 		<parameter name="browser" value="chrome" />
+		<parameter name="tname" value="S1-L-C" />
 			<classes>
 				<class name="app.netlify.automation.scenario1"/>
 			</classes>
@@ -41,7 +42,7 @@
 				<class name="app.netlify.automation.scenario2"/>
 			</classes>
 </test> <!-- Test -->  
-<test name="Scenari2 local edge">
+<test name="Scenario2 local edge">
 		<parameter name="browser" value="edge" />
 		<parameter name="tname" value="S1-L-E" />
 			<classes>
@@ -49,15 +50,7 @@
 			</classes>
 </test> <!-- Test -->  
 
-
-<test name="local chrome">
-		<parameter name="browser" value="chrome" />
-			<classes>
-				<class name="app.netlify.automation.scenario2"/>
-			</classes>
-</test> <!-- Test -->  
- 
- <test name="Scenario1 Browserstack winchrome">
+<test name="Scenario1 Browserstack winchrome">
 		<parameter name="browser" value="browserstack" />
 		<parameter name="bsbrowser" value="Chrome" />
 		<parameter name="bsbrowserv" value="latest" />
@@ -82,6 +75,7 @@
 				<class name="app.netlify.automation.scenario1"/>
 			</classes>
 </test> <!-- Test -->  
+
 	
 <test name="Scenario1 Browserstack winedge">
 		<parameter name="browser" value="browserstack" />
@@ -94,7 +88,7 @@
 			<classes>
 				<class name="app.netlify.automation.scenario1"/>
 			</classes>
-
+			
 </test> <!-- Test -->   
  
 <test name="Scenario2 Browserstack winchrome">
@@ -124,6 +118,8 @@
 			</classes>			
 
 </test> <!-- Test -->  
+
+
 			
 <test name="Scenario2 Browserstack winedge">
 		<parameter name="browser" value="browserstack" />
@@ -136,6 +132,7 @@
 			<classes>
 				<class name="app.netlify.automation.scenario2"/>
 			</classes>			
+
 </test> <!-- Test -->  
  
  <test name="Scenario1 Browserstack macsafari">
@@ -157,7 +154,7 @@
 		<parameter name="bsbrowserv" value="14.0" />
 		<parameter name="bsos" value="OS X" />
 		<parameter name="bsosv" value="Big Sur" />
-		<parameter name="tname" value="BS-S2-MacSafari" />
+		<parameter name="tname" value="BS-S1-MacSafari" />
 		
 			<classes>
 				<class name="app.netlify.automation.scenario2"/>
@@ -188,6 +185,8 @@
 
 </test> <!-- Test -->  
 
+  
+
   <test name="Scenario2 Browserstack androidchrome">
 		<parameter name="browser" value="Android" />
 		<parameter name="bsos" value="Samsung Galaxy S20" />
@@ -210,6 +209,10 @@
 				<class name="app.netlify.automation.scenario2"/>
 			</classes>			
 
-</test> <!-- Test -->   
+</test> <!-- Test -->  
+
+
+
+
 
 </suite> <!-- Suite -->
