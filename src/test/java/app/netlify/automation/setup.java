@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -14,7 +15,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
-import org.testng.asserts.SoftAssert;
+
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class setup 
@@ -25,26 +28,27 @@ public class setup
 	public static final String USERNAME = "azmat3";
 	public static final String AUTOMATE_KEY = "pHchLNUxZiGgzCHahRHx";
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-//	String browser;
 
 	
 public WebDriver Setup(String browser,String bsbrowser,String bsbrowserv, String bsos,String osv, String tName )  throws Exception
 {
 	if(browser.equalsIgnoreCase("chrome")){
-		System.setProperty("webdriver.chrome.driver","d:/chromedriver.exe");
-	   	
+
+		WebDriverManager.chromedriver().setup();
 	 	driver= new ChromeDriver();
-		}
+		driver.manage().window().maximize();
+		
+	}
 		//Check if parameter passed as 'chrome'
 		else if(browser.equalsIgnoreCase("firefox")){
 
-			System.setProperty("webdriver.gecko.driver", "d:/geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
-
+	
 		}
 		else if(browser.equalsIgnoreCase("edge")){
-					System.setProperty("webdriver.edge.driver","d:/msedgedriver.exe");
+					WebDriverManager.edgedriver().setup();
 					driver = new EdgeDriver();
 					driver.manage().window().maximize();
 
@@ -62,6 +66,7 @@ public WebDriver Setup(String browser,String bsbrowser,String bsbrowserv, String
 			caps.setCapability("browser", bsbrowser);
 			caps.setCapability("browser_version", bsbrowserv);
 			caps.setCapability("name", tName);
+			caps.setCapability("browserstack.debug", "true");
 			
 
 			driver = new RemoteWebDriver(new URL(URL), caps);
@@ -80,7 +85,8 @@ public WebDriver Setup(String browser,String bsbrowser,String bsbrowserv, String
 			caps.setCapability("real_mobile", "true");
 			caps.setCapability("name", tName);
 			caps.setCapability("console", "errors");
-			
+			caps.setCapability("browserstack.debug", "true");
+
 			
 
 			driver = new RemoteWebDriver(new URL(URL), caps);
@@ -89,12 +95,10 @@ public WebDriver Setup(String browser,String bsbrowser,String bsbrowserv, String
 	
 		else
 		{
-			//If no browser passed throw exception
 			throw new Exception("Browser is not correct");
 		}	
+	
 	return driver;	
 
 }
-
-
 }

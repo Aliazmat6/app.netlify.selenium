@@ -17,89 +17,67 @@ import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-
-
-
 public class scenario2 
 {
 	String URL= "https://react-shooping-cart.netlify.app/";
 	WebDriver driver;
-
+	TearDown t = new TearDown();
 	setup set = new setup();
 	
 @Test
 @Parameters({"browser","bsbrowser","bsbrowserv","bsos","bsosv","tname"})
 public void s2(String browser,@Optional("") String bsbrowser, @Optional("") String bsbrowserv, @Optional("") String bsos,@Optional("") String bsosv,@Optional("")String tname) throws Exception {
 		
-		driver =	set.Setup(browser,bsbrowser,bsbrowserv,bsos,bsosv,tname);
-		
-		driver.get(URL);
-
+	driver =	set.Setup(browser,bsbrowser,bsbrowserv,bsos,bsosv,tname);
 		try
-
 		{
-				
-				StorePage spage = new StorePage(driver);
-				CartPage cpage = new CartPage(driver);
-				spage.clickadd();
+			driver.get(URL);
+			StorePage spage = new StorePage(driver);
+			CartPage cpage = new CartPage(driver);
+			spage.clickadd();
+			spage.clickadd1();
+			t.Sshot(driver,tname);
 
-				spage.clickadd1();
-				spage.clickcart();
-				
-			     // driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			spage.clickcart();
+			t.Sshot(driver,tname);
 
-			      
+			cpage.increasequantity();
+			cpage.increasequantity();
+			t.Sshot(driver,tname);
 
-				cpage.increasequantity();
-				
+			String items =	cpage.totalitemnum();
+			Assert.assertEquals("4",items);
+			t.Sshot(driver,tname);
 
-				
-			     
-				cpage.increasequantity();
-				 String items =	cpage.totalitemnum();
-					Assert.assertEquals("4",items);
-					String tpayments =	cpage.totalpayment();
+			String tpayments =	cpage.totalpayment();
+			Assert.assertEquals("$375.25",tpayments);
+			t.Sshot(driver,tname);
 
-					Assert.assertEquals("$375.25",tpayments);
-					
-					   boolean delcheck = cpage.checkdel();
-				       Assert.assertTrue(delcheck);
+			boolean delcheck = cpage.checkdel();
+			Assert.assertTrue(delcheck);
+			cpage.clickreduce();
+			items =	cpage.totalitemnum();
+			Assert.assertEquals("3",items);
+			t.Sshot(driver,tname);
 
-				       cpage.clickreduce();
-				       
-				       items =	cpage.totalitemnum();
-						Assert.assertEquals("3",items);
-						tpayments =	cpage.totalpayment();
-						Assert.assertEquals("$336.14",tpayments);
+			tpayments =	cpage.totalpayment();
+			Assert.assertEquals("$336.14",tpayments);
+			cpage.clickdel2();
+			items =	cpage.totalitemnum();
+			Assert.assertEquals("2",items);
+			t.Sshot(driver,tname);
 
-						cpage.clickdel2();
+			cpage.clickcheckout();
+			String checkoutmessage = cpage.checkoutmessage();
+			Assert.assertEquals("Checkout successfull",checkoutmessage);
+			String emptycartmsg1 = cpage.emptycart1();
+			Assert.assertEquals("Your cart is empty",emptycartmsg1);
+			t.Sshot(driver,tname);
 
-						  items =	cpage.totalitemnum();
-							Assert.assertEquals("2",items);
-
-							cpage.clickcheckout();
-						
-						String checkoutmessage = cpage.checkoutmessage();
-
-						
-						Assert.assertEquals("Checkout successfull",checkoutmessage);
-
-
-						String emptycartmsg1 = cpage.emptycart1();
-
-						Assert.assertEquals("Your cart is empty",emptycartmsg1);
-		driver.quit();
 		}
-
-		
-		
 		finally
-		
 		{
-			
-			
-			driver.quit();
-			
+			t.td(driver);			
 		}
 }
 }

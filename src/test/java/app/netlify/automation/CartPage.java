@@ -133,7 +133,4 @@ public String emptycart1()
 String emptycart1 =	driver.findElement(empty1).getText();
 return emptycart1;
 }
-
-
-
 }
