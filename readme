@@ -8,6 +8,8 @@ Eclipse,Selenium, TestNG,BrowserStack
 * Clone repository. 
 * Import project as existing project in eclipse project. 
 * Right click testng.xml and select run as TestNg Suite. 
+* OR open command line and go to project directory and run 
+mvn clean test -DtestNGXMLFile=src\main\resources\testng.xml
 ## Description: 
 This selenium automation project execute both scenarios as described in the assignment document. 
 testng.xml is configured in such a way that the it runs sceanrio1 and scenario2 on following:
